@@ -45,7 +45,7 @@ namespace Recipe.Core.Base.Generic
             return await this._repository.Create(entity);
         }
 
-        public async Task<TDTO> CreateAsync(TDTO dtoObject)
+        public virtual async Task<TDTO> CreateAsync(TDTO dtoObject)
         {
             var result = await this.Create(dtoObject);
             await this.UnitOfWork.SaveAsync();
@@ -54,7 +54,7 @@ namespace Recipe.Core.Base.Generic
             return dtoObject;
         }
 
-        public async Task<IList<TDTO>> CreateAsync(IList<TDTO> dtoObjects)
+        public virtual async Task<IList<TDTO>> CreateAsync(IList<TDTO> dtoObjects)
         {
             List<TEntity> results = new List<TEntity>();
             foreach (TDTO dtoObject in dtoObjects)
@@ -74,13 +74,13 @@ namespace Recipe.Core.Base.Generic
             await this._repository.DeleteAsync(id);
         }
 
-        public async Task DeleteAsync(TKey id)
+        public virtual async Task DeleteAsync(TKey id)
         {
             await this.Delete(id);
             await this.UnitOfWork.SaveAsync();
         }
 
-        public async Task DeleteAsync(IList<TKey> ids)
+        public virtual async Task DeleteAsync(IList<TKey> ids)
         {
             foreach (TKey id in ids)
             {
@@ -92,24 +92,24 @@ namespace Recipe.Core.Base.Generic
             this.UnitOfWork.DBContext.Configuration.AutoDetectChangesEnabled = true;
         }
 
-        public async Task<int> GetCount()
+        public virtual async Task<int> GetCount()
         {
             return await this._repository.GetCount();
         }
 
-        public async Task<IList<TDTO>> GetAllAsync()
+        public virtual async Task<IList<TDTO>> GetAllAsync()
         {
             IEnumerable<TEntity> entity = await this._repository.GetAll();
             return DTO<TEntity, TKey>.ConvertEntityListToDTOList<TDTO>(entity);
         }
 
-        public async Task<IList<TDTO>> GetAllAsync(JsonApiRequest request)
+        public virtual async Task<IList<TDTO>> GetAllAsync(JsonApiRequest request)
         {
             IEnumerable<TEntity> entity = await this._repository.GetAll(request);
             return DTO<TEntity, TKey>.ConvertEntityListToDTOList<TDTO>(entity);
         }
 
-        public async Task<TDTO> GetAsync(TKey id)
+        public virtual async Task<TDTO> GetAsync(TKey id)
         {
             TEntity entity = await _repository.GetAsync(id);
             if (entity == null)
@@ -126,7 +126,7 @@ namespace Recipe.Core.Base.Generic
             return await _repository.Update(entity);
         }
 
-        public async Task<TDTO> UpdateAsync(TDTO dtoObject)
+        public virtual async Task<TDTO> UpdateAsync(TDTO dtoObject)
         {
             var result = await this.Update(dtoObject);
             await UnitOfWork.SaveAsync();
@@ -134,7 +134,7 @@ namespace Recipe.Core.Base.Generic
             return dtoObject;
         }
 
-        public async Task<IList<TDTO>> UpdateAsync(IList<TDTO> dtoObjects)
+        public virtual async Task<IList<TDTO>> UpdateAsync(IList<TDTO> dtoObjects)
         {
             List<TEntity> results = new List<TEntity>();
             foreach (TDTO dtoObject in dtoObjects)
@@ -149,7 +149,7 @@ namespace Recipe.Core.Base.Generic
             return DTO<TEntity, TKey>.ConvertEntityListToDTOList<TDTO>(results);
         }
 
-        public async Task<IList<TEntity>> UpdateAsync(IList<TEntity> entityObjects)
+        public virtual async Task<IList<TEntity>> UpdateAsync(IList<TEntity> entityObjects)
         {
             foreach (var entityObject in entityObjects)
             {
