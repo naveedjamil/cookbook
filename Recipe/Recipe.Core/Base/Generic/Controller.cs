@@ -2,8 +2,10 @@
 using Recipe.Core.Base.Abstract;
 using Recipe.Core.Base.Interface;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Results;
 
 namespace Recipe.Core.Base.Generic
 {
@@ -11,7 +13,10 @@ namespace Recipe.Core.Base.Generic
     [Route("")]
     public class Controller : ApiController
     {
-
+        public async virtual Task<ResponseMessageResult> GetResponseMessage(HttpResponseMessage message)
+        {
+            return this.ResponseMessage(message);
+        }
     }
 
     public abstract class Controller<TService, TDTO, TEntity, TKey> : Controller

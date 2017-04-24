@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Recipe.Core</id>
+    <version>1.0.3</version>
+    <title>Recipe.Core</title>
+    <authors>Naveed Jamil, Tahir Hassan, Ovais Bawany</authors>
+    <owners>10Pearls</owners>
+    <licenseUrl>http://10pearls.com</licenseUrl>
+    <projectUrl>http://10pearls.com</projectUrl>
+    <iconUrl>http://10pearls.com</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Recipe to make a new Web API Project.</description>
+    <releaseNotes>Added response message in base controller</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>Core WebAPI</tags>
+  </metadata>
+</package>
