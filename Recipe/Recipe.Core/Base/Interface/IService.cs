@@ -1,4 +1,6 @@
 ﻿using Recipe.Common.Helper;
+using Recipe.Core.Attribute;
+using Recipe.Core.Enum;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -19,17 +21,22 @@ namespace Recipe.Core.Base.Interface
 
         Task<IList<TDTO>> GetAllAsync(JsonApiRequest request);
 
+        [AuditOperation(OperationType.Create)]
         Task<TDTO> CreateAsync(TDTO dtoObject);
 
+        [AuditOperation(OperationType.Update)]
         Task<TDTO> UpdateAsync(TDTO dtoObject);
 
+        [AuditOperation(OperationType.Delete)]
         Task DeleteAsync(TKey id);
 
-
+        [AuditOperation(OperationType.Create)]
         Task<IList<TDTO>> CreateAsync(IList<TDTO> dtoObjects);
 
+        [AuditOperation(OperationType.Delete)]
         Task DeleteAsync(IList<TKey> ids);
 
+        [AuditOperation(OperationType.Update)]
         Task<IList<TDTO>> UpdateAsync(IList<TDTO> dtoObjects);
     }
 

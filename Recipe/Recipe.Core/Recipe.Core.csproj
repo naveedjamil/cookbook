@@ -79,6 +79,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attribute\AuditOperation.cs" />
     <Compile Include="Base\Abstract\BaseRepository.cs" />
     <Compile Include="Base\Abstract\DTO.cs" />
     <Compile Include="Base\Abstract\Entity.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="Base\Interface\IRequestInfo.cs" />
     <Compile Include="Base\Interface\IService.cs" />
     <Compile Include="Base\Interface\IUnitOfWork.cs" />
+    <Compile Include="Enum\OperationType.cs" />
     <Compile Include="Helper\JsonApiEFQueryBuilder.cs" />
     <Compile Include="IoC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Recipe.Core</id>
-    <version>1.0.3</version>
+    <version>1.0.5</version>
     <title>Recipe.Core</title>
     <authors>Naveed Jamil, Tahir Hassan, Ovais Bawany</authors>
     <owners>10Pearls</owners>
@@ -11,7 +11,7 @@
     <iconUrl>http://10pearls.com</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Recipe to make a new Web API Project.</description>
-    <releaseNotes>Added response message in base controller</releaseNotes>
+    <releaseNotes>.Net framework 4.5 issue resolved</releaseNotes>
     <copyright>Copyright 2017</copyright>
     <tags>Core WebAPI</tags>
   </metadata>
