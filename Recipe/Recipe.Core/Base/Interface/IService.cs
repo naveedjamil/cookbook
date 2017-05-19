@@ -13,12 +13,16 @@ namespace Recipe.Core.Base.Interface
 
     public interface IService<TDTO, TKey> : IService
     {
+        [AuditOperation(OperationType.Read)]
         Task<TDTO> GetAsync(TKey id);
 
+        [AuditOperation(OperationType.Read)]
         Task<int> GetCount();
 
+        [AuditOperation(OperationType.Read)]
         Task<IList<TDTO>> GetAllAsync();
 
+        [AuditOperation(OperationType.Read)]
         Task<IList<TDTO>> GetAllAsync(JsonApiRequest request);
 
         [AuditOperation(OperationType.Create)]

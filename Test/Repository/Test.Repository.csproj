@@ -80,6 +80,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Concrete\UserRepository.cs" />
+    <Compile Include="Interface\IUserRepository.cs" />
     <Compile Include="ITestUnitOfWork.cs" />
     <Compile Include="TestUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
