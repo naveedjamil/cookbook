@@ -97,6 +97,7 @@
     <Compile Include="Base\Interface\IUnitOfWork.cs" />
     <Compile Include="Enum\OperationType.cs" />
     <Compile Include="Helper\JsonApiEFQueryBuilder.cs" />
+    <Compile Include="Helper\PlatformHelper.cs" />
     <Compile Include="Helper\Serializer.cs" />
     <Compile Include="Helper\VersionInterceptor.cs" />
     <Compile Include="IoC.cs" />

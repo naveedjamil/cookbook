@@ -13,14 +13,25 @@ namespace Recipe.Core.Helper
     {
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            string appVersion = System.Configuration.ConfigurationManager.AppSettings["AppVersion"];
-            string appVersionHeader = HttpContext.Current.Request.Headers["AppVersion"];
+            string currentRequestOSVersion = PlatformHelper.GetUserPlatform(HttpContext.Current.Request);
 
-            if (string.IsNullOrEmpty(appVersion) || (!string.IsNullOrEmpty(appVersionHeader) && appVersion != appVersionHeader))
+            string appVersion = System.Configuration.ConfigurationManager.AppSettings["AppVersion"];
+            string specificAppVersion = System.Configuration.ConfigurationManager.AppSettings[currentRequestOSVersion + "AppVersion"];
+
+            string appVersionHeader = HttpContext.Current.Request.Headers["AppVersion"];
+            string specificAppVersionHeader = HttpContext.Current.Request.Headers[currentRequestOSVersion + "AppVersion"];
+
+            if (string.IsNullOrEmpty(appVersion) ||
+                (!string.IsNullOrEmpty(specificAppVersionHeader) && specificAppVersion != specificAppVersionHeader) ||
+                (!string.IsNullOrEmpty(appVersionHeader) && appVersion != appVersionHeader))
             {
                 if (string.IsNullOrEmpty(appVersion))
                 {
                     this.ThrowAPIException(System.Net.HttpStatusCode.InternalServerError, "App version is not defined in web config");
+                }
+                else if (specificAppVersion != specificAppVersionHeader)
+                {
+                    this.ThrowAPIException(System.Net.HttpStatusCode.UpgradeRequired, currentRequestOSVersion + " App version is not matched.");
                 }
                 else if (appVersion != appVersionHeader)
                 {
